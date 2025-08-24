@@ -113,4 +113,16 @@ A robust, scalable backend that powers core Airbnb‑like features: user managem
 7) **Database Optimizations**  
    **Indexing** speeds up frequent lookups on common filters and identifiers. **Caching** reduces database load and improves response times for read-heavy operations.
 
+## API Security
+
+- **Authentication** – Session or JWT (short‑lived access + refresh). OAuth2/social login optional. Enforce password policy and MFA options.
+- **Authorization** – Role‑ and ownership‑based access control (hosts manage their properties; guests manage their bookings; admins elevated).
+- **Transport Security** – HTTPS/TLS everywhere; secure cookies and HSTS in production.
+- **Input Validation** – Serializer validation and schema validation (OpenAPI/GraphQL types). Centralized error handling.
+- **Rate Limiting & Throttling** – DRF throttles + Redis; protect login, payments, and search endpoints.
+- **CORS & CSRF** – Strict CORS allow‑list; CSRF protection for state‑changing browser requests.
+- **Secrets Management** – Environment variables or secret stores (e.g., GitHub/OIDC → cloud KMS). No secrets in VCS.
+- **Data Protection** – Encrypt sensitive fields at rest where warranted; never store raw PAN; rely on payment provider for PCI DSS scope minimization.
+- **Audit & Monitoring** – Auth logs, admin actions, payment events, anomaly detection, security alerts.
+
 
