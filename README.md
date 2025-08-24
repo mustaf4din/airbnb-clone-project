@@ -1,9 +1,9 @@
 # airbnb-clone-project
 
-### Overview
+## Overview
 A robust, scalable backend that powers core Airbnb‑like features: user management, property listings, bookings, payments, and reviews. The service exposes both REST and GraphQL APIs, is containerized for predictable deployments, and includes a CI/CD pipeline for fast, reliable delivery.
 
-### Team Roles
+## Team Roles
 
 **Backend Developer** – Implements API endpoints, business logic, validations, and integrations; writes tests and docs.
 
@@ -15,7 +15,7 @@ A robust, scalable backend that powers core Airbnb‑like features: user managem
 
 **QA Engineer** – Test strategy and automation (unit/integration/e2e), performance and regression testing.
 
-### Technology Stack
+## Technology Stack
 
 **Django** – Web framework and project foundation (auth, admin, ORM, settings, middlewares).
 
@@ -29,10 +29,65 @@ A robust, scalable backend that powers core Airbnb‑like features: user managem
 
 **Celery** – Asynchronous tasks (emails, notifications, payment webhooks, reconciliations).
 
-**OpenAPI / Swagger UI & Redoc** – Auto‑generated REST API documentation.
-
 **Docker & Docker Compose** – Reproducible local dev and containerized deployments.
 
-**GitHub Actions** – CI/CD: build, test, lint, scan, package, and deploy.
+**CI/CD Pipelines** – build, test, lint, scan, package, and deploy.
 
-**pytest** – Unit/integration testing.
+## Database Design
+
+### Core Entities & Key Fields
+
+- **User** (users)
+
+  - id (UUID/PK)
+  - email (unique)
+  - password_hash
+  - full_name
+  - role (guest|host|admin)
+
+- **Property** (properties)
+
+  - id (UUID/PK)
+  - host_id (FK → users.id)
+  - description
+  - address
+  - price_per_night
+
+- **Booking** (bookings)
+
+  - id (UUID/PK)
+  - property_id (FK)
+  - guest_id (FK → users.id)
+  - check_in
+  - check_out
+  - total_price
+
+- **Payment** (payments)
+
+  - id (UUID/PK)
+  - booking_id (FK)
+  - amount
+  - paid_at
+  - created_at
+
+- **Review** (reviews)
+
+  - id (PK),
+  - property_id (FK)
+  - author_id (FK → users.id)
+  - rating (1–5),
+  - comment
+
+### Relationships
+
+- A User (host) can own many Properties.
+
+- A User (guest) can create many Bookings; each Booking belongs to one Property and one guest.
+
+- A Booking has zero or one Payment records (potentially more for multi‑payment scenarios).
+
+- A Property has many Reviews.
+
+- A Review belongs to a Property and is authored by a User (guest who stayed).
+
+
