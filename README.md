@@ -90,7 +90,7 @@ A robust, scalable backend that powers core Airbnb‑like features: user managem
 
 - A Review belongs to a Property and is authored by a User (guest who stayed).
 
-## Features Breakdown
+## Feature Breakdown
 
 1) **API Documentation**  
    The backend is documented with the **OpenAPI** standard so clients can discover endpoints and payloads easily. **Django REST Framework (DRF)** exposes a clear RESTful interface for CRUD on core resources. **GraphQL** adds a flexible query layer when clients need to fetch exactly the fields they want.
