@@ -125,4 +125,12 @@ A robust, scalable backend that powers core Airbnb‑like features: user managem
 - **Data Protection** – Encrypt sensitive fields at rest where warranted; never store raw PAN; rely on payment provider for PCI DSS scope minimization.
 - **Audit & Monitoring** – Auth logs, admin actions, payment events, anomaly detection, security alerts.
 
+## CI/CD Pipelines
+
+CI/CD (Continuous Integration and Continuous Deployment) pipelines automate the process of building, testing, and deploying the application.  
+They are important because they ensure code quality, reduce manual errors, and allow new features to be delivered quickly and reliably.
+
+For this project, tools such as **GitHub Actions** can be used to run automated tests and deployments.  
+**Docker** can package the application into containers for consistent deployment across environments, and cloud services (e.g., AWS, Heroku, or Azure) can host the application with minimal manual intervention.
+
 
