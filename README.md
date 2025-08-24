@@ -90,4 +90,27 @@ A robust, scalable backend that powers core Airbnb‑like features: user managem
 
 - A Review belongs to a Property and is authored by a User (guest who stayed).
 
+## Features Breakdown
+
+1) **API Documentation**  
+   The backend is documented with the **OpenAPI** standard so clients can discover endpoints and payloads easily. **Django REST Framework (DRF)** exposes a clear RESTful interface for CRUD on core resources. **GraphQL** adds a flexible query layer when clients need to fetch exactly the fields they want.
+
+2) **User Authentication** (`/users/`, `/users/{user_id}/`)  
+   Supports registering new users, authenticating, and managing profiles. This ensures only authorized users can access protected actions and keeps account data organized and retrievable.
+
+3) **Property Management** (`/properties/`, `/properties/{property_id}/`)  
+   Lets hosts create, update, retrieve, and delete property listings. These endpoints power the core inventory that guests browse and book.
+
+4) **Booking System** (`/bookings/`, `/bookings/{booking_id}/`)  
+   Enables users to make, update, and manage bookings, including check-in and check-out details. It connects guests to properties and tracks the lifecycle of each stay.
+
+5) **Payment Processing** (`/payments/`)  
+   Handles payment transactions tied to bookings and records payment details. This allows bookings to be confirmed only after successful payment.
+
+6) **Review System** (`/reviews/`, `/reviews/{review_id}/`)  
+   Allows users to post and manage reviews and ratings for properties. Reviews provide feedback and trust signals that help future guests make decisions.
+
+7) **Database Optimizations**  
+   **Indexing** speeds up frequent lookups on common filters and identifiers. **Caching** reduces database load and improves response times for read-heavy operations.
+
 
